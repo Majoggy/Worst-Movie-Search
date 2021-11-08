@@ -1,0 +1,237 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap');
+
+body {
+  font-family: 'Crimson Text', serif;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(252, 252, 252);
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.body {
+  height: 100vmax;
+  width: 100vmax;
+  transition: .5s;
+}
+
+h4 {
+  font-family: sans-serif;
+  margin: 5px;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 50px;
+    margin-bottom: 0px;
+    margin-top: 60px;
+  }
+
+  h1:hover {
+    cursor: pointer;
+  }
+
+  p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 20px;
+  }
+}
+
+.search-form {
+  margin: 14px;
+}
+
+#search-bar {
+  text-align: center;
+  font-family: sans-serif;
+  padding: 10px;
+  margin: 5px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px rgb(106, 106, 106) solid;
+  background-color: rgb(253, 253, 253);
+  transition: .5s;
+}
+
+#search-button {
+font-family: sans-serif;
+margin: 5px;
+height: 44px;
+padding: 10px;
+border: 1px rgb(106, 106, 106) solid;
+border-radius: 6px;
+background-color: rgb(238, 238, 238);
+}
+
+#search-button:hover {
+  cursor: pointer;
+}
+
+.poster-wrap {
+    display: flex;
+    margin-top: 20px;
+    height: 320px;
+  }   
+
+  .results-wrap {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+.result {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:230px;
+  
+
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 5px;
+  }
+  }
+
+.poster {
+  border: 1px rgb(215, 215, 215) solid;
+  transition: 0.4s;
+}
+
+// Dark Mode
+
+.dark-mode {
+  background-color: #242424!important;
+  color:rgb(238, 238, 238)!important;
+}
+
+.p-dark-mode {
+  border: 1px rgb(79, 79, 79) solid!important;
+}
+
+.darker {
+  filter: brightness(50%);
+}
+
+// Animations
+
+.reload {
+  animation: fadeIn 1.5s;
+  -webkit-animation: fadeIn 1.5s;
+  -moz-animation: fadeIn 1.5s;
+  -o-animation: fadeIn 1.5s;
+  -ms-animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.poster:hover {
+  width: 220px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;  
+}
+
+// Media Queries 
+
+@media only screen and (max-width: 450px) {
+  .app-wrap {
+    h1 {
+      font-size: 32px;
+      margin-top: 16vh;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 2px;
+    }
+  }
+
+  #search-bar {
+    padding: 5px;
+    margin: 5px;
+    height: 15px;
+  }
+  
+  #search-button {
+  margin: 5px;
+  height: 29px;
+  padding: 5px;
+  }
+
+  h4 {
+    font-size: 12px;
+    margin: 0px;
+  }
+
+  .poster-wrap {
+    height: 130px;
+    margin: 10px;
+  }
+
+  .result {
+    width: 100px;
+    margin: 0px;
+
+    p {
+      font-size: 12px;
+    }
+
+    .title {
+      margin: 0px;
+      font-size: 12px;
+    }
+  }
+
+  .poster {
+    width: 90px;
+    height: auto;
+  }
+
+  .poster:hover {
+    width: 90px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;  
+  }
+
+  .results-wrap {
+    margin-top: 10px;
+  }
+}
+  

@@ -1,20 +1,19 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) GA London React Template
+# Worst Movie Search
 
-## Using NPM
+![Worst Movie Search Main Image](./assets/worst-movie.png)
 
-`npm run start` or `npm run dev`  to run the development server
+## Project Overview
 
-`npm run build` to create a build directory
+Worst Movie Search is a simple one-page application built in React. It uses an API from [The Movie DB](https://developers.themoviedb.org/3) to come up with an actors three worst rated movies - which I thought was slightly less useful but infinitely more amusing than just producing the three best rated ones.
 
-## Using Yarn
+## API Calls
 
-`yarn start` or `yarn dev`  to run the development server
+Although a simple application, each search necessitates two API calls and a third if you click on the poster. First it searches for the actors name - and uses the id generated to search for their filmography.
 
-`yarn build` to create a build directory
+If you click on any of the posters it performs another API call to search for the film by its id, so it can find the specific imdb id and generate a link to imdb itself.
 
-### ⚠️
+If the actor's name can't be found, the app will default to [Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon).
 
-To prevent the `failed-to-compile` issue for linter errors like `no-unsed-vars`, rename the `.env.example` to `.env` and restart your development server. Note this will only change the behaviour of certain linter errors to now be warnings, and is added just to allow your code to compile in development. These errors should still be fixed and other errors will still result in the code being unable to compile
+## Dark Mode
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+There is a hidden dark mode which can be toggled by clicking on the application header

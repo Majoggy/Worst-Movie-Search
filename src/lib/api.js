@@ -1,41 +1,33 @@
 import axios from 'axios'
-import { sortByVotes } from './helpers'
+import { EXCLUDED_PERSON_IDS } from './constants'
 
-const baseUrl = 'https://api.themoviedb.org/3'
-const apiKey = process.env.REACT_APP_API_KEY
+const tmdb = axios.create({
+  baseURL: 'https://api.themoviedb.org/3',
+  params: { api_key: process.env.REACT_APP_API_KEY },
+})
 
-export async function getActor(actor) {
-  const { data } = await axios.get(
-    `${baseUrl}/search/person?api_key=${apiKey}&query=${actor}`
-  )
+// Returns the best matching actor ({ id, name }) or null if there isn't one
+export async function getActor(query) {
+  const { data } = await tmdb.get('/search/person', { params: { query } })
+  const [person] = data.results
 
   if (
-    data.total_results === 0 ||
-    data.results[0].known_for_department !== 'Acting' ||
-    data.results[0].id === 2570957
+    !person ||
+    person.known_for_department !== 'Acting' ||
+    EXCLUDED_PERSON_IDS.includes(person.id)
   ) {
     return null
   }
 
-  return data
+  return { id: person.id, name: person.name }
 }
 
 export async function getFilmography(actorId) {
-  const { data } = await axios.get(
-    `${baseUrl}/person/${actorId}/movie_credits?api_key=${apiKey}`
-  )
-
-  if (
-    sortByVotes(data.cast)
-      .filter((movie) => movie.vote_count > 25)
-      .map((movie) => movie).length === 0
-  ) {
-    return null
-  }
-
-  return data
+  const { data } = await tmdb.get(`/person/${actorId}/movie_credits`)
+  return data.cast
 }
 
-export function getMovie(movieId) {
-  return axios.get(`${baseUrl}/movie/${movieId}?api_key=${apiKey}`)
+export async function getMovie(movieId) {
+  const { data } = await tmdb.get(`/movie/${movieId}`)
+  return data
 }
